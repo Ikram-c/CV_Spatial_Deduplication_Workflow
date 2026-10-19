@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this workflow, please cite the repository."
+title: "CPU-Only Spatial Object Deduplication for UAV Aerial Imagery"
+type: software
+authors:
+  - name: "Ikram-c"
+repository-code: "https://github.com/Ikram-c/CV_Spatial_Deduplication_Workflow"
+license: Apache-2.0
+keywords:
+  - aerial imagery
+  - bounding box intersection
+  - CPU
+  - deduplication
+  - graph transitivity
+  - NetworkX
+  - Snakemake

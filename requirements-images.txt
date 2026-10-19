@@ -1,0 +1,3 @@
+# Optional image alignment pipeline (also needs requirements.txt).
+numpy>=1.24
+opencv-python-headless>=4.8

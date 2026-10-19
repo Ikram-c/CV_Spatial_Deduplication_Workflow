@@ -1,0 +1,46 @@
+"""Snakemake entrypoint for a reproducible CPU-only spatial deduplication demo.
+
+Default mode uses aligned, precomputed COCO boxes, no image processing.
+Optional mode=images runs the original-style UAV pipeline using existing
+COCO annotations plus an ODM log and aerial frames.
+"""
+from pathlib import Path
+
+mode = config.get('mode', 'demo')
+
+if mode == 'demo':
+    input_json = config.get('input', 'examples/overlapping_frames.json')
+    output_json = config.get('output', 'output/demo_counts.json')
+
+    rule all:
+        input: output_json
+
+    rule cpu_deduplicate_demo:
+        input: input_json
+        output: output_json
+        shell:
+            'python -m examples.run_demo --input {input:q} --output {output:q}'
+
+elif mode == 'images':
+    missing = [key for key in ('odm_log', 'images', 'annotations') if not config.get(key)]
+    if missing:
+        raise ValueError(f'Image mode requires --config values for: {", ".join(missing)}')
+    image_dir = config['images']
+    dataset_name = Path(image_dir.rstrip('/')).name
+    result_file = f'output/{dataset_name}_counts.json'
+
+    rule all:
+        input: result_file
+
+    rule cpu_deduplicate_uav_frames:
+        input:
+            odm_log=config['odm_log'],
+            annotations=config['annotations']
+        params:
+            images=image_dir
+        output: result_file
+        shell:
+            'python main.py --txt_file_path {input.odm_log:q} '
+            '--img_sub_dir {params.images:q} --json_file_path {input.annotations:q}'
+else:
+    raise ValueError('mode must be demo or images')

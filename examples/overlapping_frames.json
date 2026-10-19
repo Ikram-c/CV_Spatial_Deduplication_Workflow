@@ -1,0 +1,94 @@
+{
+  "description": "Synthetic COCO detections in shared image coordinates after alignment. No model inference required.",
+  "frame_pairs": [
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "annotations": [
+    {
+      "id": 101,
+      "image_id": 1,
+      "category_id": 1,
+      "bbox": [
+        0.25,
+        0.3,
+        5.2,
+        5.2
+      ]
+    },
+    {
+      "id": 102,
+      "image_id": 2,
+      "category_id": 1,
+      "bbox": [
+        4.9,
+        0.6,
+        5.2,
+        5.2
+      ]
+    },
+    {
+      "id": 103,
+      "image_id": 3,
+      "category_id": 1,
+      "bbox": [
+        9.5,
+        0.6,
+        5.2,
+        5.2
+      ]
+    },
+    {
+      "id": 104,
+      "image_id": 3,
+      "category_id": 1,
+      "bbox": [
+        30.0,
+        30.0,
+        4.0,
+        4.0
+      ]
+    },
+    {
+      "id": 201,
+      "image_id": 2,
+      "category_id": 2,
+      "bbox": [
+        4.9,
+        0.6,
+        5.2,
+        5.2
+      ]
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "file_name": "DJI_0001.JPG"
+    },
+    {
+      "id": 2,
+      "file_name": "DJI_0002.JPG"
+    },
+    {
+      "id": 3,
+      "file_name": "DJI_0003.JPG"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "litter"
+    },
+    {
+      "id": 2,
+      "name": "other"
+    }
+  ]
+}
